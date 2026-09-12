@@ -1,96 +1,84 @@
 import React from 'react';
-import { Sparkles, Compass, FileText, Code, ShieldCheck, Rocket, ArrowRight } from 'lucide-react';
-import { PROCESS_STEPS } from '../data/process';
 import { CONTACT_CONFIG } from '../config/contact';
-
-const iconMap = {
-  Compass,
-  FileText,
-  Sparkles,
-  Code,
-  ShieldCheck,
-  Rocket
-};
+import { ArrowRight } from 'lucide-react';
 
 export default function Process() {
-  return (
-    <section id="process" className="py-24 relative bg-dark-950 border-t border-white/10">
-      
-      {/* Background ambient lighting */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-quantum-purple/10 rounded-full blur-[160px] pointer-events-none" />
+  const steps = [
+    {
+      step: "01",
+      title: "Scope & Requirements",
+      description: "We review your project concept, target audience, core features, and delivery milestones."
+    },
+    {
+      step: "02",
+      title: "Architecture & Design",
+      description: "We select modern technology stacks, plan modular code structure, and design intuitive UI components."
+    },
+    {
+      step: "03",
+      title: "Development & Build",
+      description: "We write clean, efficient, maintainable code to bring your requirements to life."
+    },
+    {
+      step: "04",
+      title: "Testing & Launch",
+      description: "We test functionality across mobile and desktop devices, optimize speed, and deploy your project."
+    }
+  ];
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+  return (
+    <section id="process" className="py-24 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-quantum-purple/10 border border-quantum-purple/30 text-quantum-purple-light text-xs font-mono mb-4">
-            <Sparkles className="w-3.5 h-3.5 text-quantum-cyan" />
-            <span>AGILE WORKFLOW</span>
-          </div>
-          <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-white tracking-tight">
-            HOW WE TURN <span className="gradient-text-purple-cyan">IDEAS INTO REALITY</span>
+        <div className="max-w-3xl mb-16">
+          <span className="text-xs font-mono text-indigo-400 font-semibold uppercase tracking-wider">
+            WORKFLOW
+          </span>
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-100 mt-2 tracking-tight">
+            How We Turn Ideas Into Reality
           </h2>
           <p className="text-slate-400 text-base sm:text-lg mt-3">
-            A transparent 6-step engineering timeline designed for speed, communication, and high-quality deliverables.
+            A simple, transparent 4-step execution workflow for speed and reliability.
           </p>
         </div>
 
-        {/* Timeline Steps Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative">
-          {PROCESS_STEPS.map((stepItem, idx) => {
-            const IconComponent = iconMap[stepItem.icon] || Code;
-
-            return (
-              <div
-                key={stepItem.step}
-                className="group glass-card glass-card-hover rounded-2xl p-6 border border-white/10 relative overflow-hidden flex flex-col justify-between"
-              >
-                {/* Glowing Step Number Badge */}
-                <div className="flex items-center justify-between mb-6">
-                  <span className="font-mono text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-quantum-purple to-quantum-cyan">
-                    {stepItem.step}
-                  </span>
-                  <div className="w-12 h-12 rounded-xl bg-dark-900 border border-quantum-purple/30 flex items-center justify-center text-quantum-purple group-hover:text-quantum-cyan group-hover:border-quantum-cyan/50 group-hover:scale-110 transition-all duration-300">
-                    <IconComponent className="w-6 h-6" />
-                  </div>
-                </div>
-
-                {/* Step Title & Description */}
-                <div>
-                  <h3 className="font-display font-bold text-xl text-white mb-2 group-hover:text-quantum-cyan transition-colors">
-                    {stepItem.title}
-                  </h3>
-                  <p className="text-xs font-mono text-quantum-purple mb-3">
-                    "{stepItem.shortDescription}"
-                  </p>
-                  <p className="text-slate-300 text-sm leading-relaxed mb-4">
-                    {stepItem.detailedDescription}
-                  </p>
-                </div>
-
-                {/* Step Bottom Indicator */}
-                <div className="pt-4 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-slate-500">
-                  <span>STAGE {idx + 1} OF 6</span>
-                  <span className="text-quantum-cyan font-bold opacity-0 group-hover:opacity-100 transition-opacity">
-                    READY FOR NEXT →
-                  </span>
-                </div>
-
+        {/* Steps Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {steps.map((item, idx) => (
+            <div
+              key={idx}
+              className="card-craft p-6 flex flex-col justify-between"
+            >
+              <div>
+                <span className="font-mono text-3xl font-extrabold text-indigo-500/80 block mb-4">
+                  {item.step}
+                </span>
+                <h3 className="text-lg font-bold text-slate-100 mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-slate-300 text-xs leading-relaxed">
+                  {item.description}
+                </p>
               </div>
-            );
-          })}
+
+              <div className="pt-4 mt-6 border-t border-slate-800/80 text-[11px] font-mono text-slate-400">
+                MILESTONE {idx + 1} OF 4
+              </div>
+            </div>
+          ))}
         </div>
 
-        {/* Process CTA */}
-        <div className="mt-16 text-center">
+        {/* CTA */}
+        <div className="mt-12 text-center">
           <a
             href={CONTACT_CONFIG.GOOGLE_FORM_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-xl text-base font-bold text-white bg-gradient-to-r from-quantum-purple via-indigo-600 to-quantum-cyan shadow-[0_0_25px_rgba(168,85,247,0.4)] hover:shadow-[0_0_35px_rgba(6,182,212,0.6)] hover:scale-105 transition-all duration-300 group"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-500 transition-colors"
           >
-            <span>Start Step 01: Discover Your Requirements</span>
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <span>Start Step 01: Discuss Your Scope</span>
+            <ArrowRight className="w-4 h-4" />
           </a>
         </div>
 

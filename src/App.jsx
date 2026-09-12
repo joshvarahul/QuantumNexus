@@ -1,35 +1,24 @@
 import React from 'react';
-import NetworkBackground from './components/NetworkBackground';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import WhatWeDo from './components/WhatWeDo';
-import HowWeWork from './components/HowWeWork';
+import Services from './components/Services';
+import Process from './components/Process';
 import About from './components/About';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#060913] text-slate-100 font-sans relative selection:bg-purple-500/30 selection:text-purple-300">
-      
-      {/* Interactive Constellation Network Canvas Background */}
-      <NetworkBackground />
-
-      {/* Header Navbar */}
+    <div className="min-h-screen bg-[#080c14] text-slate-100 font-sans selection:bg-indigo-500/30 selection:text-indigo-300">
       <Navbar />
-
-      {/* Main Sections */}
-      <main className="relative z-10">
+      <main>
         <Hero />
-        <WhatWeDo />
-        <HowWeWork />
+        <Services />
+        <Process />
         <About />
         <ContactSection />
       </main>
-
-      {/* Footer */}
       <Footer />
-
     </div>
   );
 }

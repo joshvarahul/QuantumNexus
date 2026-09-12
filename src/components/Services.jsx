@@ -1,96 +1,112 @@
-import React, { useState } from 'react';
-import { 
-  Globe, 
-  ShoppingBag, 
-  Code2, 
-  Smartphone, 
-  Palette, 
-  Layers, 
-  Server, 
-  Rocket, 
-  GraduationCap, 
-  BookOpenCheck, 
-  ArrowRight,
-  Sparkles
-} from 'lucide-react';
-import { SERVICES_DATA } from '../data/services';
-import ServiceModal from './ServiceModal';
-
-const iconMap = {
-  Globe,
-  ShoppingBag,
-  Code2,
-  Smartphone,
-  Palette,
-  Layers,
-  Server,
-  CloudRocket: Rocket,
-  GraduationCap,
-  BookOpenCheck
-};
+import React from 'react';
+import { Globe, ShoppingBag, Code2, Smartphone, Palette, GraduationCap, BookOpen, ArrowRight, Check } from 'lucide-react';
+import { CONTACT_CONFIG } from '../config/contact';
 
 export default function Services() {
-  const [selectedService, setSelectedService] = useState(null);
+  const servicesList = [
+    {
+      title: "Website Development",
+      description: "Responsive, modern, and user-friendly websites designed for businesses, portfolios, organizations, and personal brands.",
+      icon: Globe,
+      features: ["Responsive Layouts", "Speed & SEO Optimization", "Clean Modular Code"]
+    },
+    {
+      title: "E-Commerce Development",
+      description: "Custom online stores designed to help businesses showcase products, manage orders, and scale online.",
+      icon: ShoppingBag,
+      features: ["Custom Storefronts", "Payment Integration", "Seamless Checkout Flow"]
+    },
+    {
+      title: "Web Application Development",
+      description: "Custom web applications built around unique business logic and modern user interaction requirements.",
+      icon: Code2,
+      features: ["Interactive Dashboards", "REST & API Architectures", "Scalable Data Storage"]
+    },
+    {
+      title: "Mobile App Development",
+      description: "Modern Android and cross-platform mobile application interfaces built for performance and intuitive navigation.",
+      icon: Smartphone,
+      features: ["Cross-Platform UI", "Mobile-First Design", "Smooth Touch Interactions"]
+    },
+    {
+      title: "UI/UX Design",
+      description: "Intuitive, clean, and engaging digital interfaces focused on accessibility, visual hierarchy, and user experience.",
+      icon: Palette,
+      features: ["Wireframes & Flowcharts", "Design System Components", "Modern Interface Layouts"]
+    },
+    {
+      title: "Academic & Final Year Projects",
+      description: "Technical project development, implementation support, code architecture, and academic project guidance.",
+      icon: GraduationCap,
+      features: ["Architecture & Code Mentoring", "Working Prototypes", "Implementation Support"]
+    },
+    {
+      title: "Assignments & Technical Work",
+      description: "Well-researched technical academic solutions, algorithm problem-solving support, and project guidance.",
+      icon: BookOpen,
+      features: ["Technical Problem Solving", "Algorithm Explanations", "Quality Code Reviews"]
+    }
+  ];
 
   return (
-    <section id="services" className="py-24 relative bg-dark-950/80 border-t border-white/10">
-      
-      {/* Background radial glow */}
-      <div className="absolute top-1/2 left-0 w-96 h-96 bg-quantum-purple/10 rounded-full blur-[120px] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="services" className="py-24 bg-[#0a0e18] border-y border-slate-800/80">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Heading */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-quantum-purple/10 border border-quantum-purple/30 text-quantum-purple-light text-xs font-mono mb-4">
-            <Sparkles className="w-3.5 h-3.5 text-quantum-cyan" />
-            <span>OUR SERVICES</span>
-          </div>
-          <h2 className="font-display font-extrabold text-3xl sm:text-5xl text-white tracking-tight">
-            WHAT WE <span className="gradient-text-purple-cyan">BUILD</span>
+        {/* Section Header */}
+        <div className="max-w-3xl mb-16">
+          <span className="text-xs font-mono text-indigo-400 font-semibold uppercase tracking-wider">
+            OUR CAPABILITIES
+          </span>
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-100 mt-2 tracking-tight">
+            What We Do
           </h2>
           <p className="text-slate-400 text-base sm:text-lg mt-3">
-            Digital solutions designed around your ideas. End-to-end technical execution from initial scope to production deployment.
+            Digital solutions designed around your ideas. End-to-end technical execution from initial requirements to delivery.
           </p>
         </div>
 
-        {/* 10 Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {SERVICES_DATA.map((service) => {
-            const IconComponent = iconMap[service.icon] || Code2;
-
+        {/* Services Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {servicesList.map((service, idx) => {
+            const Icon = service.icon;
             return (
               <div
-                key={service.id}
-                onClick={() => setSelectedService(service)}
-                className="group relative glass-card glass-card-hover rounded-2xl p-6 border border-white/10 flex flex-col justify-between cursor-pointer"
+                key={idx}
+                className="card-craft p-7 flex flex-col justify-between group"
               >
                 <div>
-                  {/* Top Bar: Number & Icon */}
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="font-mono text-xs font-extrabold text-slate-500 bg-white/5 px-2.5 py-1 rounded-lg border border-white/5">
-                      {service.id}
-                    </span>
-                    <div className="w-10 h-10 rounded-xl bg-dark-900 border border-quantum-purple/30 flex items-center justify-center text-quantum-purple group-hover:text-quantum-cyan group-hover:border-quantum-cyan/50 group-hover:scale-110 transition-all duration-300">
-                      <IconComponent className="w-5 h-5" />
-                    </div>
+                  <div className="w-12 h-12 rounded-xl bg-indigo-950/80 border border-indigo-800/40 flex items-center justify-center text-indigo-400 mb-6 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                    <Icon className="w-6 h-6" />
                   </div>
 
-                  {/* Title & Short Description */}
-                  <h3 className="font-display font-bold text-xl text-white group-hover:text-quantum-cyan transition-colors mb-3">
+                  <h3 className="text-xl font-bold text-slate-100 mb-3 group-hover:text-indigo-300 transition-colors">
                     {service.title}
                   </h3>
+
                   <p className="text-slate-300 text-sm leading-relaxed mb-6">
-                    {service.shortDescription}
+                    {service.description}
                   </p>
+
+                  <ul className="space-y-2 mb-6">
+                    {service.features.map((feat, fIdx) => (
+                      <li key={fIdx} className="flex items-center gap-2 text-xs text-slate-400">
+                        <Check className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
+                        <span>{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
 
-                {/* Card Action Link */}
-                <div className="pt-4 border-t border-white/5 flex items-center justify-between text-xs font-bold text-slate-400 group-hover:text-white transition-colors">
-                  <span className="flex items-center gap-1 group-hover:text-quantum-cyan">
-                    Learn More
-                  </span>
-                  <ArrowRight className="w-4 h-4 text-quantum-cyan group-hover:translate-x-1 transition-transform" />
+                <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+                  <a
+                    href={CONTACT_CONFIG.GOOGLE_FORM_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-semibold text-indigo-400 hover:text-slate-100 flex items-center gap-1.5 transition-colors"
+                  >
+                    <span>Inquire for {service.title}</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </a>
                 </div>
 
               </div>
@@ -99,12 +115,6 @@ export default function Services() {
         </div>
 
       </div>
-
-      {/* Service Modal Popup */}
-      <ServiceModal
-        service={selectedService}
-        onClose={() => setSelectedService(null)}
-      />
     </section>
   );
 }

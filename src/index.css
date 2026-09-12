@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    background-color: #060913;
+    color: #f1f5f9;
+    overflow-x: hidden;
+  }
+
+  /* Custom Minimalist Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #060913;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1e293b;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #8b5cf6;
+  }
+}
+
+@layer components {
+  /* Reference Style Glass Container */
+  .glass-box {
+    background: rgba(13, 17, 30, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .glass-card-simple {
+    background: rgba(15, 20, 35, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: all 0.3s ease;
+  }
+
+  .glass-card-simple:hover {
+    background: rgba(20, 26, 46, 0.85);
+    border-color: rgba(139, 92, 246, 0.4);
+    transform: translateY(-3px);
+  }
+
+  /* Pill Buttons matching Screenshot */
+  .btn-pill-primary {
+    background: #8b5cf6;
+    color: #ffffff;
+    border-radius: 9999px;
+    transition: all 0.2s ease;
+  }
+  .btn-pill-primary:hover {
+    background: #7c3aed;
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+    transform: translateY(-1px);
+  }
+
+  .btn-pill-secondary {
+    background: rgba(15, 20, 35, 0.8);
+    color: #e2e8f0;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 9999px;
+    transition: all 0.2s ease;
+  }
+  .btn-pill-secondary:hover {
+    background: rgba(25, 32, 54, 0.9);
+    border-color: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+  }
+}
